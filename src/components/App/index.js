@@ -34,7 +34,12 @@ class App extends Component {
 
   render() {
     const { cars, clicked_car } = this.state;
-    console.log('render=', clicked_car)
+    console.log('render=', clicked_car.image);
+    let image_src;
+    if (clicked_car) {
+      image_src = 'http://localhost:3001/' + clicked_car.image.substring(9);
+    }
+    console.log('image_src=', image_src);
     return (
       <React.Fragment>
         <div className="car-detail-info">
@@ -43,11 +48,18 @@ class App extends Component {
               Car Detail Info
             </legend>
 
-            <div>{clicked_car._id}</div>
+            <div>{clicked_car.model}</div>
+            <div>{clicked_car.year}</div>
+            <div>{clicked_car.producer}</div>
+            <div>{clicked_car.price}</div>
+            <div>{clicked_car.owner}</div>
+            <div>{clicked_car['tel/mobile']}</div>
+            <div>{clicked_car.mileage}</div>
+            <div>{clicked_car.registered}</div>
           </fieldset>
 
           <div className="img_container">
-            <img src="#" alt="a car" />
+            <img src={image_src} alt="a car" />
           </div>
         </div>
 
