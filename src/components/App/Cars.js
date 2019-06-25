@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Cars extends Component {
+// Cars is a PureComponent because we don't want to re-render it when clicking on a car (PureComponent does a shallow compare on the component's props and state)
+class Cars extends PureComponent {
   constructor(props) {
     super(props)
     // state for search bar
