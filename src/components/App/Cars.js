@@ -18,6 +18,8 @@ class Cars extends Component {
 
   render() {
     const cars = this.props.cars;
+    const filteredList = this.props.cars.filter( car => car.model.toLowerCase().includes(this.state.filterTextInput.toLowerCase()));
+
     console.log('cars=', cars);
     return(
       // <div className="cars">
@@ -41,7 +43,7 @@ class Cars extends Component {
             </tr>
           </thead>
           <tbody>
-            {cars.map( car => <Car car={car} key={car.id} />)}
+            {filteredList.map( car => <Car car={car} key={car._id} />)}
           </tbody>
 
         </table>
@@ -54,7 +56,6 @@ class Cars extends Component {
 
 const Car = (props) => {
   const { car } = props;
-  console.log(car);
   return (
     <tr>
       <td>{car.model}</td>
