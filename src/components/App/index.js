@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Cars from './Cars';
 
 
 class App extends Component {
@@ -17,16 +18,22 @@ class App extends Component {
   getCars() {
     fetch('http://localhost:3001/cars')
       .then(response => response.json())
-      .then(resJSON => console.log(resJSON))
+      .then(resJSON => this.setState({ cars: resJSON }))
       .catch(error => console.error(error));
   }
 
   render() {
+    const { cars } = this.state;
     return (
-      <div id="car-detail-info">
+      <React.Fragment>
+        <div className="car-detail-info">
 
-      </div>
+        </div>
 
+        <div className='carslist'>
+          <Cars cars={cars}/>
+        </div>
+      </React.Fragment>
 
     )
   }
