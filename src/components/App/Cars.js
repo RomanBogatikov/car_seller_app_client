@@ -26,7 +26,7 @@ class Cars extends Component {
 
       <React.Fragment>
         <div className="search">
-          <input value={this.state.filterTextInput} onChange={this.handleChange} placeholder="Search by car model" />
+          <input value={this.state.filterTextInput} onChange={this.handleChange} placeholder="Search by car model" type="text" />
         </div>
 
         <div className="cars">

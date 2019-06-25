@@ -48,14 +48,14 @@ class App extends Component {
               Car Detail Info
             </legend>
 
-            <div>{clicked_car.model}</div>
-            <div>{clicked_car.year}</div>
-            <div>{clicked_car.producer}</div>
-            <div>{clicked_car.price}</div>
-            <div>{clicked_car.owner}</div>
-            <div>{clicked_car['tel/mobile']}</div>
-            <div>{clicked_car.mileage}</div>
-            <div>{clicked_car.registered}</div>
+            <div><b>Model: </b>{clicked_car.model}</div>
+            <div><b>Year: </b>{clicked_car.year}</div>
+            <div><b>Producer: </b>{clicked_car.producer}</div>
+            <div><b>Price, $: </b>{clicked_car.price}</div>
+            <div><b>Owner: </b>{clicked_car.owner}</div>
+            <div><b>Tel/Mobile: </b>{clicked_car['tel/mobile']}</div>
+            <div><b>Mileage: </b>{clicked_car.mileage}</div>
+            <div><b>Registered: </b>{clicked_car.registered}</div>
           </fieldset>
 
           <div className="img_container">
