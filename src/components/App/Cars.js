@@ -18,7 +18,7 @@ class Cars extends Component {
 
   render() {
     const cars = this.props.cars;
-    const filteredList = this.props.cars.filter( car => car.model.toLowerCase().includes(this.state.filterTextInput.toLowerCase()));
+    const filteredList = this.props.cars.filter( car => car.model.toLowerCase().startsWith(this.state.filterTextInput.toLowerCase()));
 
     console.log('cars=', cars);
     return(
