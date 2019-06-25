@@ -18,6 +18,10 @@ code {
   height: 45vh;
 }
 
+fieldset {
+  min-width: 12rem;
+}
+
 fieldset, .img_container {
   flex: auto;
 }
@@ -73,12 +77,18 @@ tr {
   padding: 0.5rem;
 }
 
+tbody > tr {
+  cursor: pointer;
+}
+
 tbody > tr:hover {
   box-shadow: 0 0 0.35rem rgba(0, 0, 0, 0.9);
 }
 
 thead > tr {
+  box-shadow: 0 4px 2px -2px gray;
   background-color: rgb(129, 230, 169);
+  margin-bottom: 0;
 }
 
 
@@ -89,6 +99,7 @@ thead > tr {
 }
 
 input[type="text"] {
+  box-sizing: border-box;
   font-size: 1rem;
   margin-top: 0.5rem;
   width: 20rem;

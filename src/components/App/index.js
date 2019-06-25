@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import Cars from './Cars';
 
+let baseURL = process.env.REACT_APP_BASEURL
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3001/'
+} else {
+  baseURL = 'https://car-reseller-api.herokuapp.com/'
+}
+
+console.log('current base URL:', baseURL)
+
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +28,7 @@ class App extends Component {
 
   // function to fetch cars from the database
   getCars() {
-    fetch('http://localhost:3001/cars')
+    fetch(baseURL + 'cars')
       .then(response => response.json())
       .then(resJSON => this.setState({ cars: resJSON }))
       .catch(error => console.error(error));
@@ -29,7 +39,6 @@ class App extends Component {
     this.setState({
       clicked_car: car,
     })
-
   }
 
   render() {
@@ -37,7 +46,7 @@ class App extends Component {
     console.log('render=', clicked_car.image);
     let image_src;
     if (clicked_car.image) {
-      image_src = 'http://localhost:3001/' + clicked_car.image.substring(9);
+      image_src = baseURL + clicked_car.image.substring(9);
     } else {
       image_src = '/placeholder.png'
     }
