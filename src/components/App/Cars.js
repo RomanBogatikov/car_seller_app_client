@@ -17,37 +17,39 @@ class Cars extends Component {
 
 
   render() {
-    const cars = this.props.cars;
+
     const filteredList = this.props.cars.filter( car => car.model.toLowerCase().startsWith(this.state.filterTextInput.toLowerCase()));
 
-    console.log('cars=', cars);
+    console.log('cars=', this.props.cars);
+    console.log('props in cars=', this.props);
     return(
-      // <div className="cars">
-      //   <input value={this.state.filterTextInput} onChange={this.handleChange} placeholder="Search by car model"/>
 
-      //   {cars.map( car => <Car car={car} key={car.id} />)}
+      <React.Fragment>
+        <div className="search">
+          <input value={this.state.filterTextInput} onChange={this.handleChange} placeholder="Search by car model" />
+        </div>
 
-      // </div>
+        <div className="cars">
 
-      <div className="cars">
-        <input value={this.state.filterTextInput} onChange={this.handleChange} placeholder="Search by car model"/>
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Producer</th>
+                <th>Price</th>
+                <th>Mileage</th>
+              </tr>
+            </thead>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Year</th>
-              <th>Producer</th>
-              <th>Price</th>
-              <th>Mileage</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredList.map( car => <Car car={car} key={car._id} />)}
-          </tbody>
+            <tbody>
+              {filteredList.map( car => <Car car={car} key={car._id} handleClick={this.props.handleClick} />)}
+            </tbody>
 
-        </table>
-      </div>
+          </table>
+
+        </div>
+      </React.Fragment>
     )
 
   }
@@ -57,7 +59,7 @@ class Cars extends Component {
 const Car = (props) => {
   const { car } = props;
   return (
-    <tr>
+    <tr onClick={event => props.handleClick(event, car)}>
       <td>{car.model}</td>
       <td>{car.year}</td>
       <td>{car.producer}</td>

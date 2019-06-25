@@ -7,6 +7,7 @@ class App extends Component {
     super(props);
     this.state = {
       cars: [],
+      clicked_car: '',
     }
   };
 
@@ -15,6 +16,7 @@ class App extends Component {
     this.getCars();
   }
 
+  // function to fetch cars from the database
   getCars() {
     fetch('http://localhost:3001/cars')
       .then(response => response.json())
@@ -22,16 +24,35 @@ class App extends Component {
       .catch(error => console.error(error));
   }
 
+  handleClick = (event, car) => {
+    console.log('click', car);
+    this.setState({
+      clicked_car: car,
+    })
+
+  }
+
   render() {
-    const { cars } = this.state;
+    const { cars, clicked_car } = this.state;
+    console.log('render=', clicked_car)
     return (
       <React.Fragment>
         <div className="car-detail-info">
+          <fieldset>
+            <legend>
+              Car Detail Info
+            </legend>
 
+            <div>{clicked_car._id}</div>
+          </fieldset>
+
+          <div className="img_container">
+            <img src="#" alt="a car" />
+          </div>
         </div>
 
-        <div className='carslist'>
-          <Cars cars={cars}/>
+        <div className='cars_with_search'>
+          <Cars cars={cars} handleClick={this.handleClick}/>
         </div>
       </React.Fragment>
 

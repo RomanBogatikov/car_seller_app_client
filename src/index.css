@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+
+.car-detail-info {
+  display: flex;
+}
+
+/* style table of cars */
+.cars > table thead {
+  display: block;
+}
+
+.cars > table > tbody {
+  display: block;
+  height: 45vh;
+  overflow: auto;
+}
+
+.cars > table {
+  width: 100%;
+}
+
+.cars > table > thead > tr, .cars > table > tbody > tr {
+  display: flex;
+  justify-content: space-between;
+  flex: auto;
+}
+
+.cars > table > thead > tr > *, .cars > table > tbody > tr > * {
+  flex-basis: 20%;
+}
+
+.cars > table > thead > tr > th {
+  text-align: left;
+}
+/* end of style table for cars */
