@@ -36,8 +36,10 @@ class App extends Component {
     const { cars, clicked_car } = this.state;
     console.log('render=', clicked_car.image);
     let image_src;
-    if (clicked_car) {
+    if (clicked_car.image) {
       image_src = 'http://localhost:3001/' + clicked_car.image.substring(9);
+    } else {
+      image_src = '/placeholder.png'
     }
     console.log('image_src=', image_src);
     return (
